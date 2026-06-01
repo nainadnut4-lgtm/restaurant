@@ -16,6 +16,9 @@ clasp push
 # Deploy (อัปเดต deployment เดิม — URL ไม่เปลี่ยน)
 clasp deploy --deploymentId "AKfycbzoq2MF_L95c-rBv4NLjJRgcCavclL1BradjNwwB45YtudC4XRDuCQ49XFOJwecEtE" --description "Fix: ..."
 
+# Backup โค้ดขึ้น GitHub (ทำทุกครั้งหลัง deploy)
+git add -A && git commit -m "Deploy: ..." && git push origin main
+
 # เปิด Web App
 open "https://script.google.com/macros/s/AKfycbzoq2MF_L95c-rBv4NLjJRgcCavclL1BradjNwwB45YtudC4XRDuCQ49XFOJwecEtE/exec"
 ```
