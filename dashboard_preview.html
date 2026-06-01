@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Preview — ครัวเอเฮาส์</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green: #1D9E75; --green-dark: #0A4D3C; --green-light: #E1F5EE;
+  --orange: #D85A30; --orange-light: #FAECE7;
+  --blue: #378ADD; --blue-light: #E6F1FB;
+  --purple: #7F77DD; --purple-light: #EEEDFE;
+  --yellow: #E2A917; --yellow-light: #FDF7E3;
+  --red: #E53935; --red-light: #FFEBEE;
+  --bg: #F2F4F7; --white: #fff; --text: #1A1A2E; --muted: #8A94A6;
+}
+body { font-family: 'Sarabun', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+/* ── HEADER ── */
+.header {
+  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+  padding: 16px 20px 0; position: relative; overflow: hidden;
+}
+.header::before {
+  content: ''; position: absolute; top: -40px; right: -40px;
+  width: 180px; height: 180px; border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+}
+.header::after {
+  content: ''; position: absolute; bottom: -60px; left: 20px;
+  width: 120px; height: 120px; border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+.header-top { display: flex; justify-content: space-between; align-items: flex-start; position: relative; z-index: 1; }
+.brand { display: flex; flex-direction: column; gap: 2px; }
+.brand-name { font-size: 22px; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
+.brand-sub { font-size: 12px; color: rgba(255,255,255,0.65); font-weight: 400; }
+.header-actions { display: flex; gap: 8px; align-items: center; }
+.btn-report {
+  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.35);
+  color: #fff; padding: 7px 14px; border-radius: 20px; font-size: 12px;
+  font-weight: 500; cursor: pointer; font-family: 'Sarabun', sans-serif;
+  backdrop-filter: blur(4px);
+}
+.pos-live-badge {
+  display: flex; align-items: center; gap: 5px;
+  background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3);
+  color: #fff; padding: 6px 12px; border-radius: 20px; font-size: 11px; font-weight: 600;
+}
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ADE80; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+
+/* Wave */
+.wave { display: block; line-height: 0; margin-top: 14px; }
+.wave svg { width: 100%; height: 28px; display: block; }
+
+/* ── KPI STRIP ── */
+.kpi-strip {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px; padding: 14px 16px 0;
+}
+.kpi-card {
+  background: var(--white); border-radius: 16px; padding: 14px 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07); position: relative; overflow: hidden;
+}
+.kpi-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 3px 3px 0 0;
+}
+.kpi-income::before { background: var(--green); }
+.kpi-expense::before { background: var(--orange); }
+.kpi-profit::before { background: var(--blue); }
+.kpi-icon {
+  width: 32px; height: 32px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; margin-bottom: 8px;
+}
+.kpi-income .kpi-icon { background: var(--green-light); }
+.kpi-expense .kpi-icon { background: var(--orange-light); }
+.kpi-profit .kpi-icon { background: var(--blue-light); }
+.kpi-val { font-size: 16px; font-weight: 700; letter-spacing: -0.4px; line-height: 1.1; }
+.kpi-income .kpi-val { color: var(--green); }
+.kpi-expense .kpi-val { color: var(--orange); }
+.kpi-profit .kpi-val { color: var(--blue); }
+.kpi-label { font-size: 10px; color: var(--muted); margin-top: 3px; font-weight: 500; }
+.kpi-change { font-size: 10px; margin-top: 4px; font-weight: 600; }
+.up { color: var(--green); } .down { color: var(--orange); }
+
+/* ── TODAY STRIP ── */
+.today-strip {
+  display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 8px; padding: 12px 16px 0;
+}
+.today-card {
+  background: var(--white); border-radius: 14px; padding: 11px 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: center;
+}
+.today-val { font-size: 17px; font-weight: 700; color: var(--text); }
+.today-label { font-size: 10px; color: var(--muted); margin-top: 3px; }
+
+/* ── POS STATUS ── */
+.section { padding: 14px 16px 0; }
+.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.section-title { font-size: 13px; font-weight: 600; color: var(--text); display: flex; align-items: center; gap: 6px; }
+.section-link { font-size: 11px; color: var(--green); font-weight: 500; cursor: pointer; }
+.pos-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+.pos-stat-card {
+  background: var(--white); border-radius: 14px; padding: 14px 10px;
+  text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border: 1.5px solid transparent;
+}
+.pos-stat-card.active-table { border-color: #BBF7D0; background: #F0FDF4; }
+.pos-stat-card.pending    { border-color: #FED7AA; background: #FFF7ED; }
+.pos-stat-card.served     { border-color: #BBF7D0; background: #F0FDF4; }
+.pos-stat-num { font-size: 24px; font-weight: 800; }
+.pos-active-num { color: #16A34A; }
+.pos-pending-num { color: #EA580C; }
+.pos-served-num  { color: #0369A1; }
+.pos-stat-label { font-size: 10px; color: var(--muted); margin-top: 3px; font-weight: 500; }
+
+/* Table chips */
+.table-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.table-chip {
+  padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 600;
+  display: flex; align-items: center; gap: 5px;
+}
+.tc-open   { background: #DCFCE7; color: #15803D; border: 1.5px solid #86EFAC; }
+.tc-cooking{ background: #FEF3C7; color: #B45309; border: 1.5px solid #FCD34D; }
+.tc-empty  { background: #F1F5F9; color: #94A3B8; border: 1.5px dashed #CBD5E1; }
+.tc-dot    { width: 7px; height: 7px; border-radius: 50%; }
+.tc-open .tc-dot   { background: #16A34A; }
+.tc-cooking .tc-dot{ background: #D97706; animation: pulse 1.5s infinite; }
+.tc-empty .tc-dot  { background: #94A3B8; }
+
+/* ── STOCK ALERT ── */
+.alert-card {
+  background: var(--white); border-radius: 16px; overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.alert-header {
+  background: linear-gradient(90deg,#FFF7ED,#FFF);
+  padding: 10px 14px; border-bottom: 0.5px solid #FED7AA;
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 600; color: #B45309;
+}
+.alert-row {
+  display: flex; align-items: center; padding: 10px 14px;
+  border-bottom: 0.5px solid #F8FAFC; gap: 10px;
+}
+.alert-row:last-child { border-bottom: none; }
+.alert-icon { font-size: 18px; flex-shrink: 0; }
+.alert-info { flex: 1; }
+.alert-name { font-size: 13px; font-weight: 500; color: var(--text); }
+.alert-sub  { font-size: 11px; color: var(--muted); margin-top: 1px; }
+.alert-badge {
+  font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px; white-space: nowrap;
+}
+.badge-out  { background: #FEE2E2; color: var(--red); }
+.badge-low  { background: #FEF3C7; color: #B45309; }
+.badge-ok   { background: var(--green-light); color: #0F6E56; }
+
+/* Stock bar */
+.stock-bar-bg { height: 5px; background: #F1F5F9; border-radius: 3px; margin-top: 5px; overflow: hidden; }
+.stock-bar-fill { height: 100%; border-radius: 3px; transition: width 0.6s ease; }
+
+/* ── TOP MENU ── */
+.top-menu-card {
+  background: var(--white); border-radius: 16px; overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.menu-rank-row {
+  display: flex; align-items: center; padding: 10px 14px; gap: 12px;
+  border-bottom: 0.5px solid #F8FAFC;
+}
+.menu-rank-row:last-child { border-bottom: none; }
+.rank-num {
+  width: 26px; height: 26px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; flex-shrink: 0;
+}
+.r1 { background: #FFF9C4; color: #B07D00; }
+.r2 { background: #F0F4FF; color: #4B5FD8; }
+.r3 { background: #FFF0F0; color: #D04040; }
+.rank-icon { font-size: 22px; flex-shrink: 0; }
+.rank-info { flex: 1; min-width: 0; }
+.rank-name  { font-size: 13px; font-weight: 500; color: var(--text); }
+.rank-count { font-size: 11px; color: var(--muted); margin-top: 1px; }
+.rank-revenue { text-align: right; }
+.rank-amount { font-size: 13px; font-weight: 700; color: var(--green); }
+.rank-bar { height: 4px; background: #F1F5F9; border-radius: 2px; margin-top: 4px; overflow: hidden; }
+.rank-bar-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg,var(--green),#4ADE80); }
+
+/* ── QUICK ACTIONS ── */
+.quick-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
+.quick-btn {
+  background: var(--white); border-radius: 14px; padding: 14px 8px;
+  text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  cursor: pointer; transition: transform 0.15s, box-shadow 0.15s;
+}
+.quick-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.1); }
+.quick-icon {
+  width: 40px; height: 40px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; margin: 0 auto 8px;
+}
+.qi-green  { background: var(--green-light); }
+.qi-orange { background: var(--orange-light); }
+.qi-blue   { background: var(--blue-light); }
+.qi-purple { background: var(--purple-light); }
+.quick-label { font-size: 11px; font-weight: 600; color: var(--text); }
+
+/* ── CHART ── */
+.chart-card { background: var(--white); border-radius: 16px; padding: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+.chart-legend { display: flex; gap: 14px; margin-bottom: 12px; }
+.legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--muted); }
+.legend-dot  { width: 10px; height: 10px; border-radius: 3px; }
+.chart-bars { display: flex; gap: 6px; align-items: flex-end; height: 90px; }
+.bar-group  { flex: 1; display: flex; gap: 2px; align-items: flex-end; }
+.bar { flex: 1; border-radius: 4px 4px 0 0; min-height: 4px; transition: height 0.5s ease; }
+.bar.i { background: linear-gradient(180deg,#4ADE80,var(--green)); }
+.bar.e { background: linear-gradient(180deg,#FB923C,var(--orange)); }
+.bar-labels { display: flex; gap: 6px; margin-top: 6px; }
+.bar-lbl { flex: 1; text-align: center; font-size: 9px; color: var(--muted); }
+
+/* ── RECENT ── */
+.recent-list { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+.txn-row { display: flex; align-items: center; padding: 11px 14px; gap: 10px; border-bottom: 0.5px solid #F8FAFC; }
+.txn-row:last-child { border-bottom: none; }
+.txn-avatar { width: 38px; height: 38px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.txn-body { flex: 1; min-width: 0; }
+.txn-name  { font-size: 13px; font-weight: 500; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.txn-date  { font-size: 11px; color: var(--muted); margin-top: 1px; }
+.txn-amt   { font-size: 14px; font-weight: 700; text-align: right; white-space: nowrap; }
+.amt-in  { color: var(--green); }
+.amt-out { color: var(--orange); }
+
+/* ── MARGIN CARD ── */
+.margin-card {
+  background: linear-gradient(135deg, var(--green-dark) 0%, #1D7A5C 100%);
+  border-radius: 16px; padding: 16px; box-shadow: 0 4px 16px rgba(29,158,117,0.25);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.margin-left { color: #fff; }
+.margin-title { font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 6px; }
+.margin-val   { font-size: 32px; font-weight: 800; color: #fff; letter-spacing: -1px; }
+.margin-sub   { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+.margin-right { text-align: right; }
+.margin-badge { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 6px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+.margin-circle {
+  width: 80px; height: 80px; position: relative; margin: 0 auto 8px;
+}
+.margin-circle svg { transform: rotate(-90deg); }
+
+/* ── BOTTOM NAV ── */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: #fff; border-top: 0.5px solid #eee;
+  display: flex; padding-bottom: 4px;
+  box-shadow: 0 -2px 16px rgba(0,0,0,0.07);
+}
+.nav-item { flex: 1; padding: 10px 0 6px; text-align: center; font-size: 10px; color: var(--muted); cursor: pointer; position: relative; }
+.nav-item.active { color: var(--green); }
+.nav-item.active::before {
+  content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 24px; height: 3px; border-radius: 0 0 3px 3px;
+  background: var(--green);
+}
+.nav-icon { font-size: 22px; display: block; margin-bottom: 3px; }
+.nav-badge {
+  position: absolute; top: 6px; left: calc(50% + 6px);
+  background: var(--orange); color: #fff; font-size: 9px; font-weight: 700;
+  padding: 1px 5px; border-radius: 10px; min-width: 16px; text-align: center;
+}
+
+.spacer { height: 90px; }
+.page-wrap { max-width: 600px; margin: 0 auto; }
+
+/* Pill tabs */
+.pill-tabs { display: flex; gap: 6px; overflow-x: auto; padding: 12px 16px 0; scrollbar-width: none; }
+.pill-tabs::-webkit-scrollbar { display: none; }
+.pill { padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 500; white-space: nowrap; cursor: pointer; border: 1.5px solid #E2E8F0; color: var(--muted); background: #fff; }
+.pill.active { background: var(--green); color: #fff; border-color: var(--green); }
+
+/* Notification dot */
+.notif-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); position: absolute; top: 8px; right: 8px; border: 2px solid #fff; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<!-- ── HEADER ── -->
+<div class="header">
+  <div class="header-top">
+    <div class="brand">
+      <span class="brand-name">ครัวเอเฮาส์</span>
+      <span class="brand-sub">พ.ค. 2569 · อังคาร 13 พ.ค.</span>
+    </div>
+    <div class="header-actions">
+      <div class="pos-live-badge">
+        <span class="live-dot"></span>
+        3 โต๊ะ
+      </div>
+      <button class="btn-report">📊 รายงาน</button>
+    </div>
+  </div>
+  <div class="wave">
+    <svg viewBox="0 0 400 28" preserveAspectRatio="none">
+      <path d="M0,14 C100,28 300,0 400,14 L400,28 L0,28 Z" fill="#F2F4F7"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ── KPI CARDS ── -->
+<div class="kpi-strip">
+  <div class="kpi-card kpi-income">
+    <div class="kpi-icon">▲</div>
+    <div class="kpi-val">฿46,795</div>
+    <div class="kpi-label">รายรับเดือนนี้</div>
+    <div class="kpi-change up">▲ +12% vs เดือนก่อน</div>
+  </div>
+  <div class="kpi-card kpi-expense">
+    <div class="kpi-icon">▼</div>
+    <div class="kpi-val">฿41,075</div>
+    <div class="kpi-label">รายจ่ายเดือนนี้</div>
+    <div class="kpi-change down">▲ +8% vs เดือนก่อน</div>
+  </div>
+  <div class="kpi-card kpi-profit">
+    <div class="kpi-icon">≈</div>
+    <div class="kpi-val">฿5,719</div>
+    <div class="kpi-label">กำไรสุทธิ</div>
+    <div class="kpi-change up">▲ +31% vs เดือนก่อน</div>
+  </div>
+</div>
+
+<!-- ── TODAY STRIP ── -->
+<div class="today-strip">
+  <div class="today-card">
+    <div class="today-val" style="color:var(--green)">฿8,270</div>
+    <div class="today-label">วันนี้</div>
+  </div>
+  <div class="today-card">
+    <div class="today-val">18</div>
+    <div class="today-label">ออเดอร์</div>
+  </div>
+  <div class="today-card">
+    <div class="today-val">฿459</div>
+    <div class="today-label">เฉลี่ย/บิล</div>
+  </div>
+  <div class="today-card">
+    <div class="today-val" style="color:var(--green)">12.2%</div>
+    <div class="today-label">Margin</div>
+  </div>
+</div>
+
+<!-- ── QUICK ACTIONS ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-title">⚡ ทางลัด</span>
+  </div>
+  <div class="quick-grid">
+    <div class="quick-btn">
+      <div class="quick-icon qi-green">🧾</div>
+      <div class="quick-label">POS แคชเชียร์</div>
+    </div>
+    <div class="quick-btn">
+      <div class="quick-icon qi-orange">▼</div>
+      <div class="quick-label">บันทึกรายจ่าย</div>
+    </div>
+    <div class="quick-btn" style="position:relative;">
+      <div class="notif-dot"></div>
+      <div class="quick-icon qi-blue">📦</div>
+      <div class="quick-label">เช็คสต็อก</div>
+    </div>
+    <div class="quick-btn">
+      <div class="quick-icon qi-purple">👨‍🍳</div>
+      <div class="quick-label">ครัว</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── POS STATUS ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-title">🍽️ สถานะโต๊ะ <span style="font-size:10px;background:#DCFCE7;color:#16A34A;padding:2px 8px;border-radius:20px;margin-left:4px;">Live</span></span>
+    <span class="section-link">ดูทั้งหมด →</span>
+  </div>
+  <div class="pos-grid">
+    <div class="pos-stat-card active-table">
+      <div class="pos-stat-num pos-active-num">3</div>
+      <div class="pos-stat-label">โต๊ะเปิดอยู่</div>
+    </div>
+    <div class="pos-stat-card pending">
+      <div class="pos-stat-num pos-pending-num">5</div>
+      <div class="pos-stat-label">รายการรอทำ</div>
+    </div>
+    <div class="pos-stat-card">
+      <div class="pos-stat-num pos-served-num">24</div>
+      <div class="pos-stat-label">เสิร์ฟแล้ววันนี้</div>
+    </div>
+  </div>
+  <div class="table-chips">
+    <div class="table-chip tc-open"><span class="tc-dot"></span>โต๊ะ 1 · ฿340</div>
+    <div class="table-chip tc-cooking"><span class="tc-dot"></span>โต๊ะ 3 · กำลังทำ</div>
+    <div class="table-chip tc-open"><span class="tc-dot"></span>โต๊ะ 5 · ฿890</div>
+    <div class="table-chip tc-empty"><span class="tc-dot"></span>โต๊ะ 2 · ว่าง</div>
+    <div class="table-chip tc-empty"><span class="tc-dot"></span>โต๊ะ 4 · ว่าง</div>
+  </div>
+</div>
+
+<!-- ── MARGIN CARD ── -->
+<div class="section">
+  <div class="margin-card">
+    <div class="margin-left">
+      <div class="margin-title">Profit Margin เดือนนี้</div>
+      <div class="margin-val">12.2%</div>
+      <div class="margin-sub">กำไร ฿5,719 จาก ฿46,795</div>
+    </div>
+    <div style="text-align:center;">
+      <svg width="72" height="72" viewBox="0 0 72 72">
+        <circle cx="36" cy="36" r="28" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="8"/>
+        <circle cx="36" cy="36" r="28" fill="none" stroke="#4ADE80" stroke-width="8"
+          stroke-dasharray="175.9" stroke-dashoffset="154.5"
+          stroke-linecap="round" transform="rotate(-90 36 36)"/>
+        <text x="36" y="40" text-anchor="middle" font-size="13" font-weight="800" fill="#fff" font-family="Sarabun">12%</text>
+      </svg>
+      <div style="font-size:10px;color:rgba(255,255,255,0.65);margin-top:2px;">▲ +3.1% vs เดือนก่อน</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── STOCK ALERT ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-title">⚠️ แจ้งเตือนสต็อก</span>
+    <span class="section-link">จัดการ →</span>
+  </div>
+  <div class="alert-card">
+    <div class="alert-header">⚠️ วัตถุดิบใกล้หมด / หมดแล้ว</div>
+    <div class="alert-row">
+      <div class="alert-icon">🥩</div>
+      <div class="alert-info">
+        <div class="alert-name">หมูสับ</div>
+        <div class="alert-sub">เหลือ 1.5 kg / ต้องการ 5 kg/วัน</div>
+        <div class="stock-bar-bg"><div class="stock-bar-fill" style="width:30%;background:#EF4444;"></div></div>
+      </div>
+      <span class="alert-badge badge-low">⚠️ ใกล้หมด</span>
+    </div>
+    <div class="alert-row">
+      <div class="alert-icon">🥚</div>
+      <div class="alert-info">
+        <div class="alert-name">ไข่ไก่</div>
+        <div class="alert-sub">เหลือ 0 ฟอง</div>
+        <div class="stock-bar-bg"><div class="stock-bar-fill" style="width:0%;background:#EF4444;"></div></div>
+      </div>
+      <span class="alert-badge badge-out">🔴 หมดแล้ว</span>
+    </div>
+    <div class="alert-row">
+      <div class="alert-icon">🌿</div>
+      <div class="alert-info">
+        <div class="alert-name">ต้นหอม</div>
+        <div class="alert-sub">เหลือ 200 g / ต้องการ 500 g/วัน</div>
+        <div class="stock-bar-bg"><div class="stock-bar-fill" style="width:40%;background:#F59E0B;"></div></div>
+      </div>
+      <span class="alert-badge badge-low">⚠️ ใกล้หมด</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── TOP MENU ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-title">🏆 เมนูขายดีวันนี้</span>
+    <span class="section-link">ดูทั้งหมด →</span>
+  </div>
+  <div class="top-menu-card">
+    <div class="menu-rank-row">
+      <div class="rank-num r1">1</div>
+      <div class="rank-icon">🍲</div>
+      <div class="rank-info">
+        <div class="rank-name">ก๋วยจั๊บญวน</div>
+        <div class="rank-count">× 24 ชาม</div>
+        <div class="rank-bar"><div class="rank-bar-fill" style="width:100%"></div></div>
+      </div>
+      <div class="rank-revenue">
+        <div class="rank-amount">฿2,400</div>
+      </div>
+    </div>
+    <div class="menu-rank-row">
+      <div class="rank-num r2">2</div>
+      <div class="rank-icon">🥗</div>
+      <div class="rank-info">
+        <div class="rank-name">ส้มตำไทย</div>
+        <div class="rank-count">× 18 จาน</div>
+        <div class="rank-bar"><div class="rank-bar-fill" style="width:75%"></div></div>
+      </div>
+      <div class="rank-revenue">
+        <div class="rank-amount">฿1,080</div>
+      </div>
+    </div>
+    <div class="menu-rank-row">
+      <div class="rank-num r3">3</div>
+      <div class="rank-icon">🍗</div>
+      <div class="rank-info">
+        <div class="rank-name">ไก่ทอดกระเทียม</div>
+        <div class="rank-count">× 15 จาน</div>
+        <div class="rank-bar"><div class="rank-bar-fill" style="width:63%"></div></div>
+      </div>
+      <div class="rank-revenue">
+        <div class="rank-amount">฿1,050</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 6-MONTH CHART ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-title">📈 6 เดือนย้อนหลัง</span>
+  </div>
+  <div class="chart-card">
+    <div class="chart-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>รายรับ</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div>รายจ่าย</div>
+    </div>
+    <div class="chart-bars" id="bars"></div>
+    <div class="bar-labels" id="bar-labels"></div>
+  </div>
+</div>
+
+<!-- ── RECENT TRANSACTIONS ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-title">🕐 รายการล่าสุด</span>
+    <span class="section-link">ดูทั้งหมด →</span>
+  </div>
+  <div class="recent-list">
+    <div class="txn-row">
+      <div class="txn-avatar" style="background:#E1F5EE">💰</div>
+      <div class="txn-body">
+        <div class="txn-name">POS-20260513-203731432 · Test</div>
+        <div class="txn-date">2026-05-13 · 8 รายการ</div>
+      </div>
+      <div class="txn-amt amt-in">+฿8,270</div>
+    </div>
+    <div class="txn-row">
+      <div class="txn-avatar" style="background:#E1F5EE">💰</div>
+      <div class="txn-body">
+        <div class="txn-name">POS-20260513-193601290 · Test</div>
+        <div class="txn-date">2026-05-13 · 5 รายการ</div>
+      </div>
+      <div class="txn-amt amt-in">+฿8,845</div>
+    </div>
+    <div class="txn-row">
+      <div class="txn-avatar" style="background:#FAECE7">🛒</div>
+      <div class="txn-body">
+        <div class="txn-name">Makro</div>
+        <div class="txn-date">2026-05-13</div>
+      </div>
+      <div class="txn-amt amt-out">-฿8,998</div>
+    </div>
+    <div class="txn-row">
+      <div class="txn-avatar" style="background:#FAECE7">🛒</div>
+      <div class="txn-body">
+        <div class="txn-name">ตลาด</div>
+        <div class="txn-date">2026-05-13</div>
+      </div>
+      <div class="txn-amt amt-out">-฿455</div>
+    </div>
+  </div>
+</div>
+
+<div class="spacer"></div>
+</div><!-- end page-wrap -->
+
+<!-- ── BOTTOM NAV ── -->
+<div class="bottom-nav">
+  <div class="nav-item active">
+    <span class="nav-icon">⊞</span>หน้าหลัก
+  </div>
+  <div class="nav-item">
+    <span class="nav-icon">▼</span>รายจ่าย
+  </div>
+  <div class="nav-item">
+    <span class="nav-icon">▲</span>รายรับ
+  </div>
+  <div class="nav-item" style="position:relative;">
+    <span class="nav-badge">3</span>
+    <span class="nav-icon">≡</span>ประวัติ
+  </div>
+  <div class="nav-item">
+    <span class="nav-icon">🔍</span>ค้นหา
+  </div>
+</div>
+
+<script>
+// Chart data
+const months = ['ธ.ค.','ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.'];
+const income  = [12000, 8000, 15000, 22000, 38000, 46795];
+const expense = [11000, 7500, 13000, 19000, 38000, 41075];
+const maxVal  = Math.max(...income, ...expense);
+
+const barsEl = document.getElementById('bars');
+const lblEl  = document.getElementById('bar-labels');
+
+months.forEach((m, i) => {
+  const iH = (income[i] / maxVal * 80).toFixed(1);
+  const eH = (expense[i] / maxVal * 80).toFixed(1);
+  barsEl.innerHTML += `<div class="bar-group">
+    <div class="bar i" style="height:${iH}px"></div>
+    <div class="bar e" style="height:${eH}px"></div>
+  </div>`;
+  lblEl.innerHTML += `<div class="bar-lbl">${m}</div>`;
+});
+</script>
+</body>
+</html>
