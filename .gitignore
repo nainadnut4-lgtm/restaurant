@@ -1,2 +1,13 @@
-# GAS app template — ไม่ push ขึ้น GitHub (ใช้ clasp push เท่านั้น)
+# GitHub repo สำหรับ redirect เท่านั้น — ไฟล์ GAS ทั้งหมด push ด้วย clasp เท่านั้น
 index.html
+Api.js
+Code.js
+WebApp.js
+app.html
+style.html
+appsscript.json
+dashboard_preview.html
+Note.html
+.clasp.json
+CLAUDE.md
+.claude/
