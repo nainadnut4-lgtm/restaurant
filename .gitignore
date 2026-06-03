@@ -11,3 +11,8 @@ Note.html
 .clasp.json
 CLAUDE.md
 .claude/
+
+# ไฟล์ flowchart / generator — dev artifact เฉพาะเครื่อง ไม่ push ขึ้น GitHub
+_flowchart.html
+gen_flowchart_svg.py
+gen_walletrecord_flowchart.py
