@@ -1,0 +1,330 @@
+<!doctype html><html><head><meta charset="utf-8"><style>@page{size:A4 portrait;margin:0}*{margin:0;padding:0}.page{width:210mm;height:297mm;page-break-after:always;overflow:hidden}.page:last-child{page-break-after:auto}</style></head><body><div class="page"><svg width="210mm" height="297mm" viewBox="0 0 794 1123" xmlns="http://www.w3.org/2000/svg"><defs><marker id="a0" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#37474F"/></marker><marker id="a1" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#2E7D32"/></marker><marker id="a2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#C62828"/></marker><marker id="a3" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#1565C0"/></marker><marker id="a4" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#EF6C00"/></marker><marker id="a5" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#6A1B9A"/></marker><marker id="a6" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#00838F"/></marker></defs><rect width="794" height="1123" fill="#F7F9FB"/>
+<rect x="0" y="0" width="794" height="84" fill="#11212B"/>
+<rect x="0" y="0" width="9" height="84" fill="#4FC3F7"/>
+<text x="34" y="42" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="22" font-weight="700" fill="#fff">WalletRecord คืออะไร — ภาพรวมระบบ</text>
+<text x="34" y="66" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="13" font-weight="400" fill="#B0BEC5">แอปจดบิล/ขายหน้าร้าน (POS) + บัญชีรายรับ-รายจ่าย ทำงานบนเว็บ เก็บข้อมูลใน Google Sheets</text>
+<text x="34" y="1103" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11" font-weight="400" fill="#90A4AE">WalletRecord — ระบบ POS + บัญชีร้านอาหาร (Google Apps Script + Google Sheets)</text>
+<text x="760" y="1103" text-anchor="end" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11" font-weight="400" fill="#90A4AE">หน้า 1 / 6</text>
+<rect x="40" y="104" width="714" height="92" rx="6" fill="#FFFDE7" stroke="#FBC02D" stroke-width="1.2"/>
+<text x="56" y="132" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="13.5" font-weight="700" fill="#22303A">พูดให้เห็นภาพ:  พนักงานเปิดเว็บบนแท็บเล็ต กดสั่งอาหารเข้าโต๊ะ → ปิดบิล → ระบบบันทึกยอดขายให้เอง</text>
+<text x="56" y="158" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="400" fill="#455A64">• ทำงานบนบริการฟรีของ Google ไม่มีเซิร์ฟเวอร์ของตัวเอง  • ข้อมูลทุกอย่างเก็บเป็นตารางใน Google Sheets</text>
+<text x="56" y="182" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="400" fill="#455A64">• ด้านล่างคือ “เส้นทางของข้อมูล” จากนิ้วผู้ใช้ ลงไปถึงฐานข้อมูล แล้วส่งผลลัพธ์กลับขึ้นมา</text>
+<rect x="117.0" y="240.0" width="560" height="66" rx="33.0" ry="33.0" fill="#2E7D32" stroke="#1A2327" stroke-width="1.4"/>
+<text x="397.0" y="263.8" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="14" font-weight="700" fill="#fff"><tspan x="397.0" y="263.8">ผู้ใช้งาน — พนักงานหน้าร้าน / เจ้าของร้าน</tspan><tspan x="397.0" y="282.2">(เปิดผ่านเบราว์เซอร์บนแท็บเล็ต หรือ มือถือ)</tspan></text>
+<rect x="117.0" y="346.0" width="560" height="66" fill="#1565C0" stroke="#1A2327" stroke-width="1.4"/>
+<text x="397.0" y="370.4" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="13" font-weight="700" fill="#fff"><tspan x="397.0" y="370.4">หน้าจอเว็บแอป  (ไฟล์ app.html)</tspan><tspan x="397.0" y="387.6">เมนูอาหาร • เปิดโต๊ะ/สั่งอาหาร • รายรับ-รายจ่าย • ประวัติ • รายงาน</tspan></text>
+<polygon points="150.0,452.0 677.0,452.0 644.0,518.0 117.0,518.0" fill="#00838F" stroke="#1A2327" stroke-width="1.4"/>
+<text x="397.0" y="476.8" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#fff"><tspan x="397.0" y="476.8">สะพานเชื่อมของ Google  ( google.script.run )</tspan><tspan x="397.0" y="493.2">ส่ง “คำสั่ง + ข้อมูล” จากหน้าจอ ไปยังเซิร์ฟเวอร์ของ Google</tspan></text>
+<rect x="117.0" y="558.0" width="560" height="66" fill="#EF6C00" stroke="#1A2327" stroke-width="1.4"/><line x1="128.0" y1="558.0" x2="128.0" y2="624.0" stroke="#fff" stroke-width="1"/><line x1="666.0" y1="558.0" x2="666.0" y2="624.0" stroke="#fff" stroke-width="1"/>
+<text x="397.0" y="582.8" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#fff"><tspan x="397.0" y="582.8">ตัวจัดเส้นทาง  (ไฟล์ WebApp.js → doPost)</tspan><tspan x="397.0" y="599.2">ดูว่าคำสั่งคืออะไร (action) แล้วส่งต่อให้ฟังก์ชันที่ถูกต้อง</tspan></text>
+<rect x="117.0" y="664.0" width="560" height="66" fill="#283593" stroke="#1A2327" stroke-width="1.4"/><line x1="128.0" y1="664.0" x2="128.0" y2="730.0" stroke="#fff" stroke-width="1"/><line x1="666.0" y1="664.0" x2="666.0" y2="730.0" stroke="#fff" stroke-width="1"/>
+<text x="397.0" y="689.1" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#fff"><tspan x="397.0" y="689.1">สมองประมวลผล  (ไฟล์ Api.js)</tspan><tspan x="397.0" y="704.9">คิดเลข/ตรวจเงื่อนไข/อ่าน-เขียนข้อมูล เช่น createSession, closeSession</tspan></text>
+<path d="M 117.0,778.6 L 117.0,827.4 A 280.0,8.6 0 0 0 677.0,827.4 L 677.0,778.6 A 280.0,8.6 0 0 1 117.0,778.6 Z" fill="#6A1B9A" stroke="#1A2327" stroke-width="1.4"/><ellipse cx="397.0" cy="778.6" rx="280.0" ry="8.6" fill="#6A1B9A" stroke="#1A2327" stroke-width="1.4"/>
+<text x="397.0" y="794.8" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#fff"><tspan x="397.0" y="794.8">ฐานข้อมูล  Google Sheets</tspan><tspan x="397.0" y="811.2">order_sessions • order_items • menu_items • income/expense • master_admin</tspan></text>
+<line x1="302.0" y1="306.0" x2="302.0" y2="345.0" stroke="#C62828" stroke-width="1.8" marker-end="url(#a2)"/>
+<line x1="492.0" y1="346.0" x2="492.0" y2="307.0" stroke="#2E7D32" stroke-width="1.8" marker-end="url(#a1)"/>
+<line x1="302.0" y1="412.0" x2="302.0" y2="451.0" stroke="#C62828" stroke-width="1.8" marker-end="url(#a2)"/>
+<line x1="492.0" y1="452.0" x2="492.0" y2="413.0" stroke="#2E7D32" stroke-width="1.8" marker-end="url(#a1)"/>
+<line x1="302.0" y1="518.0" x2="302.0" y2="557.0" stroke="#C62828" stroke-width="1.8" marker-end="url(#a2)"/>
+<line x1="492.0" y1="558.0" x2="492.0" y2="519.0" stroke="#2E7D32" stroke-width="1.8" marker-end="url(#a1)"/>
+<line x1="302.0" y1="624.0" x2="302.0" y2="663.0" stroke="#C62828" stroke-width="1.8" marker-end="url(#a2)"/>
+<line x1="492.0" y1="664.0" x2="492.0" y2="625.0" stroke="#2E7D32" stroke-width="1.8" marker-end="url(#a1)"/>
+<line x1="302.0" y1="730.0" x2="302.0" y2="769.0" stroke="#C62828" stroke-width="1.8" marker-end="url(#a2)"/>
+<line x1="492.0" y1="770.0" x2="492.0" y2="731.0" stroke="#2E7D32" stroke-width="1.8" marker-end="url(#a1)"/>
+<rect x="278.0" y="316.2" width="48.0" height="19.6" rx="3" fill="#F7F9FB" opacity="0.95"/>
+<text x="302.0" y="326.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="700" fill="#C62828">คำขอ ▼</text>
+<rect x="464.9" y="316.2" width="54.3" height="19.6" rx="3" fill="#F7F9FB" opacity="0.95"/>
+<text x="492.0" y="326.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="700" fill="#2E7D32">▲ คำตอบ</text></svg></div><div class="page"><svg width="210mm" height="297mm" viewBox="0 0 794 1123" xmlns="http://www.w3.org/2000/svg"><defs><marker id="a0" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#37474F"/></marker><marker id="a1" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#2E7D32"/></marker><marker id="a2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#C62828"/></marker><marker id="a3" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#1565C0"/></marker><marker id="a4" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#EF6C00"/></marker><marker id="a5" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#6A1B9A"/></marker><marker id="a6" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#00838F"/></marker></defs><rect width="794" height="1123" fill="#F7F9FB"/>
+<rect x="0" y="0" width="794" height="84" fill="#11212B"/>
+<rect x="0" y="0" width="9" height="84" fill="#4FC3F7"/>
+<text x="34" y="42" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="22" font-weight="700" fill="#fff">ขั้นตอนใช้งานจริงหน้าร้าน  (วงจรการขาย)</text>
+<text x="34" y="66" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="13" font-weight="400" fill="#B0BEC5">พนักงานล็อกอิน → เปิดโต๊ะ → สั่งอาหาร → ปิดบิล หรือ ยกเลิกโต๊ะ</text>
+<text x="34" y="1103" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11" font-weight="400" fill="#90A4AE">WalletRecord — ระบบ POS + บัญชีร้านอาหาร (Google Apps Script + Google Sheets)</text>
+<text x="760" y="1103" text-anchor="end" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11" font-weight="400" fill="#90A4AE">หน้า 2 / 6</text>
+<rect x="135.0" y="97.0" width="230" height="46" rx="23.0" ry="23.0" fill="#2E7D32" stroke="#1A2327" stroke-width="1.4"/>
+<text x="250.0" y="120.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="13" font-weight="700" fill="#fff"><tspan x="250.0" y="120.0">เริ่ม — เปิดแอป</tspan></text>
+<polygon points="130.0,190.4 370.0,168.0 370.0,224.0 130.0,224.0" fill="#6D4C41" stroke="#1A2327" stroke-width="1.4"/>
+<text x="250.0" y="196.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#fff"><tspan x="250.0" y="196.0">พนักงานกรอกรหัส PIN</tspan></text>
+<polygon points="250.0,258.0 345.0,300.0 250.0,342.0 155.0,300.0" fill="#EF6C00" stroke="#1A2327" stroke-width="1.4"/>
+<text x="250.0" y="300.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#fff"><tspan x="250.0" y="300.0">PIN ถูกต้อง?</tspan></text>
+<rect x="100.0" y="384.0" width="300" height="52" fill="#1565C0" stroke="#1A2327" stroke-width="1.4"/>
+<text x="250.0" y="410.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#fff"><tspan x="250.0" y="410.0">เข้าหน้าหลัก — เห็นโต๊ะที่เปิดอยู่</tspan></text>
+<polygon points="100.0,494.2 400.0,471.0 400.0,529.0 100.0,529.0" fill="#6D4C41" stroke="#1A2327" stroke-width="1.4"/>
+<text x="250.0" y="492.1" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#fff"><tspan x="250.0" y="492.1">เลือก “เปิดโต๊ะใหม่”</tspan><tspan x="250.0" y="507.9">+ ตั้งชื่อโต๊ะ</tspan></text>
+<polygon points="250.0,564.0 355.0,610.0 250.0,656.0 145.0,610.0" fill="#EF6C00" stroke="#1A2327" stroke-width="1.4"/>
+<text x="250.0" y="602.1" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#fff"><tspan x="250.0" y="602.1">ชื่อโต๊ะนี้</tspan><tspan x="250.0" y="617.9">เปิดค้างอยู่แล้ว?</tspan></text>
+<rect x="100.0" y="690.0" width="300" height="56" fill="#283593" stroke="#1A2327" stroke-width="1.4"/><line x1="111.0" y1="690.0" x2="111.0" y2="746.0" stroke="#fff" stroke-width="1"/><line x1="389.0" y1="690.0" x2="389.0" y2="746.0" stroke="#fff" stroke-width="1"/>
+<text x="250.0" y="709.8" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#fff"><tspan x="250.0" y="709.8">createSession()</tspan><tspan x="250.0" y="726.2">สร้างโต๊ะใหม่ (สถานะ open)</tspan></text>
+<rect x="90.0" y="783.0" width="320" height="58" fill="#283593" stroke="#1A2327" stroke-width="1.4"/><line x1="101.0" y1="783.0" x2="101.0" y2="841.0" stroke="#fff" stroke-width="1"/><line x1="399.0" y1="783.0" x2="399.0" y2="841.0" stroke="#fff" stroke-width="1"/>
+<text x="250.0" y="804.1" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#fff"><tspan x="250.0" y="804.1">addOrderItem() — สั่งอาหารเข้าโต๊ะ</tspan><tspan x="250.0" y="819.9">(ทำซ้ำได้เรื่อย ๆ ทีละจาน)</tspan></text>
+<polygon points="250.0,882.0 355.0,930.0 250.0,978.0 145.0,930.0" fill="#EF6C00" stroke="#1A2327" stroke-width="1.4"/>
+<text x="250.0" y="921.8" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#fff"><tspan x="250.0" y="921.8">จะทำอะไรต่อ</tspan><tspan x="250.0" y="938.2">กับโต๊ะนี้?</tspan></text>
+<line x1="250.0" y1="143.0" x2="250.0" y2="168.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<line x1="250.0" y1="224.0" x2="250.0" y2="258.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<line x1="250.0" y1="342.0" x2="250.0" y2="384.0" stroke="#2E7D32" stroke-width="1.8" marker-end="url(#a1)"/>
+<rect x="251.5" y="353.2" width="29.0" height="19.6" rx="3" fill="#F7F9FB" opacity="0.95"/>
+<text x="266.0" y="363.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="700" fill="#2E7D32">ถูก</text>
+<line x1="250.0" y1="436.0" x2="250.0" y2="471.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<line x1="250.0" y1="529.0" x2="250.0" y2="564.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<line x1="250.0" y1="656.0" x2="250.0" y2="690.0" stroke="#2E7D32" stroke-width="1.8" marker-end="url(#a1)"/>
+<rect x="247.4" y="663.2" width="73.2" height="19.6" rx="3" fill="#F7F9FB" opacity="0.95"/>
+<text x="284.0" y="673.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="700" fill="#2E7D32">ยังไม่เปิด</text>
+<line x1="250.0" y1="746.0" x2="250.0" y2="783.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<line x1="250.0" y1="841.0" x2="250.0" y2="882.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<path d="M 345.0,300.0 L 560.0,300.0 L 560.0,196.0 L 370.0,196.0" fill="none" stroke="#C62828" stroke-width="1.8" marker-end="url(#a2)"/>
+<rect x="510.7" y="238.2" width="98.6" height="19.6" rx="3" fill="#F7F9FB" opacity="0.95"/>
+<text x="560.0" y="248.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="700" fill="#C62828">ผิด → กรอกใหม่</text>
+<path d="M 355.0,610.0 L 690.0,610.0 L 690.0,824.0 L 410.0,824.0" fill="none" stroke="#EF6C00" stroke-width="1.8" marker-end="url(#a4)"/>
+<rect x="578.1" y="584.2" width="123.9" height="19.6" rx="3" fill="#F7F9FB" opacity="0.95"/>
+<text x="640.0" y="594.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="700" fill="#EF6C00">เปิดแล้ว → ใช้เดิม</text>
+<path d="M 145.0,930.0 L 95.0,930.0 L 95.0,812.0 L 90.0,812.0" fill="none" stroke="#1565C0" stroke-width="1.8" marker-end="url(#a3)"/>
+<rect x="61.5" y="861.2" width="66.9" height="19.6" rx="3" fill="#F7F9FB" opacity="0.95"/>
+<text x="95.0" y="871.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="700" fill="#1565C0">สั่งเพิ่ม</text>
+<rect x="435.0" y="901.0" width="300" height="58" fill="#283593" stroke="#1A2327" stroke-width="1.4"/><line x1="446.0" y1="901.0" x2="446.0" y2="959.0" stroke="#fff" stroke-width="1"/><line x1="724.0" y1="901.0" x2="724.0" y2="959.0" stroke="#fff" stroke-width="1"/>
+<text x="585.0" y="921.8" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#fff"><tspan x="585.0" y="921.8">closeSession()</tspan><tspan x="585.0" y="938.2">คิดเงิน + ปิดโต๊ะ</tspan></text>
+<line x1="355.0" y1="930.0" x2="435.0" y2="930.0" stroke="#2E7D32" stroke-width="1.8" marker-end="url(#a1)"/>
+<rect x="371.0" y="908.2" width="48.0" height="19.6" rx="3" fill="#F7F9FB" opacity="0.95"/>
+<text x="395.0" y="918.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="700" fill="#2E7D32">ปิดบิล</text>
+<path d="M 420.0,1021.4 L 420.0,1074.6 A 165.0,9.4 0 0 0 750.0,1074.6 L 750.0,1021.4 A 165.0,9.4 0 0 1 420.0,1021.4 Z" fill="#6A1B9A" stroke="#1A2327" stroke-width="1.4"/><ellipse cx="585.0" cy="1021.4" rx="165.0" ry="9.4" fill="#6A1B9A" stroke="#1A2327" stroke-width="1.4"/>
+<text x="585.0" y="1032.8" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="700" fill="#fff"><tspan x="585.0" y="1032.8">บันทึกยอดขายอัตโนมัติ</tspan><tspan x="585.0" y="1048.0">(income_transactions)</tspan><tspan x="585.0" y="1063.2">เปลี่ยนสถานะโต๊ะ → paid</tspan></text>
+<line x1="585.0" y1="959.0" x2="585.0" y2="1012.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<path d="M 460.0,1132.0 L 710.0,1132.0 L 710.0,1195.8 C 647.5,1220.2 597.5,1183.7 585.0,1195.8 C 522.5,1208.0 510.0,1183.7 460.0,1195.8 Z" fill="#AD1457" stroke="#1A2327" stroke-width="1.4"/>
+<text x="585.0" y="1154.2" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#fff"><tspan x="585.0" y="1154.2">ได้ใบเสร็จ</tspan><tspan x="585.0" y="1170.0">POS-วันที่-เวลา</tspan><tspan x="585.0" y="1185.8">+ ยอดรวม</tspan></text>
+<line x1="585.0" y1="1084.0" x2="585.0" y2="1132.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<polygon points="250.0,1014.0 355.0,1060.0 250.0,1106.0 145.0,1060.0" fill="#EF6C00" stroke="#1A2327" stroke-width="1.4"/>
+<text x="250.0" y="1052.1" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#fff"><tspan x="250.0" y="1052.1">โต๊ะนี้จ่ายเงิน</tspan><tspan x="250.0" y="1067.9">(paid) แล้ว?</tspan></text>
+<line x1="250.0" y1="978.0" x2="250.0" y2="1014.0" stroke="#C62828" stroke-width="1.8" marker-end="url(#a2)"/>
+<rect x="213.4" y="990.2" width="73.2" height="19.6" rx="3" fill="#F7F9FB" opacity="0.95"/>
+<text x="250.0" y="1000.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="700" fill="#C62828">ยกเลิกโต๊ะ</text>
+<rect x="100.0" y="1137.0" width="300" height="56" fill="#283593" stroke="#1A2327" stroke-width="1.4"/><line x1="111.0" y1="1137.0" x2="111.0" y2="1193.0" stroke="#fff" stroke-width="1"/><line x1="389.0" y1="1137.0" x2="389.0" y2="1193.0" stroke="#fff" stroke-width="1"/>
+<text x="250.0" y="1157.1" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#fff"><tspan x="250.0" y="1157.1">deleteSession()</tspan><tspan x="250.0" y="1172.9">ลบโต๊ะ + รายการอาหารทิ้ง</tspan></text>
+<line x1="250.0" y1="1106.0" x2="250.0" y2="1137.0" stroke="#2E7D32" stroke-width="1.8" marker-end="url(#a1)"/>
+<rect x="247.4" y="1111.7" width="73.2" height="19.6" rx="3" fill="#F7F9FB" opacity="0.95"/>
+<text x="284.0" y="1121.5" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="700" fill="#2E7D32">ยังไม่จ่าย</text>
+<path d="M 20.0,1026.0 L 170.0,1026.0 L 170.0,1083.1 C 132.5,1104.9 102.5,1072.2 95.0,1083.1 C 57.5,1094.0 50.0,1072.2 20.0,1083.1 Z" fill="#AD1457" stroke="#1A2327" stroke-width="1.4"/>
+<text x="95.0" y="1052.1" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#fff"><tspan x="95.0" y="1052.1">ห้ามลบ!</tspan><tspan x="95.0" y="1067.9">บิลจ่ายแล้ว</tspan></text>
+<line x1="145.0" y1="1060.0" x2="170.0" y2="1060.0" stroke="#C62828" stroke-width="1.8" marker-end="url(#a2)"/>
+<rect x="127.2" y="1038.2" width="60.6" height="19.6" rx="3" fill="#F7F9FB" opacity="0.95"/>
+<text x="157.5" y="1048.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="700" fill="#C62828">จ่ายแล้ว</text>
+<rect x="287.5" y="1055.0" width="260" height="46" rx="23.0" ry="23.0" fill="#2E7D32" stroke="#1A2327" stroke-width="1.4"/>
+<text x="417.5" y="1078.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="13" font-weight="700" fill="#fff"><tspan x="417.5" y="1078.0">จบหนึ่งรอบบริการ</tspan></text>
+<line x1="250.0" y1="1193.0" x2="250.0" y2="1078.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<line x1="250.0" y1="1078.0" x2="287.5" y2="1078.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<line x1="585.0" y1="1208.0" x2="585.0" y2="1078.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<line x1="585.0" y1="1078.0" x2="547.5" y2="1078.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/></svg></div><div class="page"><svg width="210mm" height="297mm" viewBox="0 0 794 1123" xmlns="http://www.w3.org/2000/svg"><defs><marker id="a0" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#37474F"/></marker><marker id="a1" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#2E7D32"/></marker><marker id="a2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#C62828"/></marker><marker id="a3" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#1565C0"/></marker><marker id="a4" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#EF6C00"/></marker><marker id="a5" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#6A1B9A"/></marker><marker id="a6" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#00838F"/></marker></defs><rect width="794" height="1123" fill="#F7F9FB"/>
+<rect x="0" y="0" width="794" height="84" fill="#11212B"/>
+<rect x="0" y="0" width="9" height="84" fill="#4FC3F7"/>
+<text x="34" y="42" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="22" font-weight="700" fill="#fff">เบื้องหลัง: 1 คำสั่งเดินทางอย่างไร</text>
+<text x="34" y="66" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="13" font-weight="400" fill="#B0BEC5">ตัวอย่าง “กดปิดบิล” — ตามรอยข้อมูลจากหน้าจอ ไปเซิร์ฟเวอร์ แล้วกลับมา</text>
+<text x="34" y="1103" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11" font-weight="400" fill="#90A4AE">WalletRecord — ระบบ POS + บัญชีร้านอาหาร (Google Apps Script + Google Sheets)</text>
+<text x="760" y="1103" text-anchor="end" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11" font-weight="400" fill="#90A4AE">หน้า 3 / 6</text>
+<rect x="105.0" y="130.0" width="300" height="60" fill="#1565C0" stroke="#1A2327" stroke-width="1.4"/>
+<text x="255.0" y="151.8" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#fff"><tspan x="255.0" y="151.8">① หน้าจอ (app.html) กดปุ่ม “ปิดบิล”</tspan><tspan x="255.0" y="168.2">รวบรวม session_id ของโต๊ะ</tspan></text>
+<polygon points="135.0,224.0 405.0,224.0 375.0,284.0 105.0,284.0" fill="#00838F" stroke="#1A2327" stroke-width="1.4"/>
+<text x="255.0" y="245.8" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#fff"><tspan x="255.0" y="245.8">② google.script.run ส่งคำขอ</tspan><tspan x="255.0" y="262.2">(action = &quot;closeSession&quot;)</tspan></text>
+<rect x="105.0" y="318.0" width="300" height="60" fill="#EF6C00" stroke="#1A2327" stroke-width="1.4"/><line x1="116.0" y1="318.0" x2="116.0" y2="378.0" stroke="#fff" stroke-width="1"/><line x1="394.0" y1="318.0" x2="394.0" y2="378.0" stroke="#fff" stroke-width="1"/>
+<text x="255.0" y="339.8" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#fff"><tspan x="255.0" y="339.8">③ WebApp.js (Router) อ่าน action</tspan><tspan x="255.0" y="356.2">แล้วเรียก closeSession()</tspan></text>
+<rect x="105.0" y="412.0" width="300" height="60" fill="#283593" stroke="#1A2327" stroke-width="1.4"/><line x1="116.0" y1="412.0" x2="116.0" y2="472.0" stroke="#fff" stroke-width="1"/><line x1="394.0" y1="412.0" x2="394.0" y2="472.0" stroke="#fff" stroke-width="1"/>
+<text x="255.0" y="433.8" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#fff"><tspan x="255.0" y="433.8">④ Api.js : closeSession()</tspan><tspan x="255.0" y="450.2">รวมเงินทุกจาน + สร้างเลขใบเสร็จ</tspan></text>
+<path d="M 105.0,515.9 L 105.0,572.1 A 150.0,9.9 0 0 0 405.0,572.1 L 405.0,515.9 A 150.0,9.9 0 0 1 105.0,515.9 Z" fill="#6A1B9A" stroke="#1A2327" stroke-width="1.4"/><ellipse cx="255.0" cy="515.9" rx="150.0" ry="9.9" fill="#6A1B9A" stroke="#1A2327" stroke-width="1.4"/>
+<text x="255.0" y="528.8" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="700" fill="#fff"><tspan x="255.0" y="528.8">⑤ Google Sheets — เขียนข้อมูล</tspan><tspan x="255.0" y="544.0">income_transactions + invoice_items</tspan><tspan x="255.0" y="559.2">อัปเดต order_sessions → paid</tspan></text>
+<line x1="255.0" y1="190.0" x2="255.0" y2="224.0" stroke="#1565C0" stroke-width="1.8" marker-end="url(#a3)"/>
+<line x1="255.0" y1="284.0" x2="255.0" y2="318.0" stroke="#1565C0" stroke-width="1.8" marker-end="url(#a3)"/>
+<line x1="255.0" y1="378.0" x2="255.0" y2="412.0" stroke="#1565C0" stroke-width="1.8" marker-end="url(#a3)"/>
+<line x1="255.0" y1="472.0" x2="255.0" y2="506.0" stroke="#1565C0" stroke-width="1.8" marker-end="url(#a3)"/>
+<polygon points="427.0,472.0 695.0,472.0 663.0,536.0 395.0,536.0" fill="#00838F" stroke="#1A2327" stroke-width="1.4"/>
+<text x="545.0" y="495.8" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#fff"><tspan x="545.0" y="495.8">⑥ ส่งผลกลับเป็น JSON</tspan><tspan x="545.0" y="512.2">{success, invoice_no, total}</tspan></text>
+<line x1="405.0" y1="544.0" x2="395.0" y2="514.0" stroke="#2E7D32" stroke-width="1.8" marker-end="url(#a1)"/>
+<rect x="372.9" y="507.2" width="54.3" height="19.6" rx="3" fill="#F7F9FB" opacity="0.95"/>
+<text x="400.0" y="517.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="700" fill="#2E7D32">ผลลัพธ์</text>
+<path d="M 400.0,304.0 L 690.0,304.0 L 690.0,371.2 C 617.5,396.8 559.5,358.4 545.0,371.2 C 472.5,384.0 458.0,358.4 400.0,371.2 Z" fill="#AD1457" stroke="#1A2327" stroke-width="1.4"/>
+<text x="545.0" y="328.2" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#fff"><tspan x="545.0" y="328.2">⑦ หน้าจอแสดง “ปิดบิลสำเร็จ”</tspan><tspan x="545.0" y="344.0">โชว์ใบเสร็จ + ยอดรวม</tspan><tspan x="545.0" y="359.8">รีเฟรชรายการโต๊ะ</tspan></text>
+<line x1="545.0" y1="472.0" x2="545.0" y2="384.0" stroke="#2E7D32" stroke-width="1.8" marker-end="url(#a1)"/>
+<line x1="545.0" y1="304.0" x2="545.0" y2="160.0" stroke="#2E7D32" stroke-width="1.8" marker-end="url(#a1)"/>
+<rect x="560.7" y="222.2" width="60.6" height="19.6" rx="3" fill="#F7F9FB" opacity="0.95"/>
+<text x="591.0" y="232.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="700" fill="#2E7D32">อัปเดตจอ</text>
+<line x1="545.0" y1="160.0" x2="405.0" y2="160.0" stroke="#2E7D32" stroke-width="1.8" marker-end="url(#a1)"/>
+<rect x="40" y="634.0" width="714" height="70" rx="6" fill="#FFF3E0" stroke="#FB8C00" stroke-width="1.2"/>
+<text x="56" y="662.0" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#22303A">ทุกครั้งที่เขียนลง Sheets ต้องสั่ง SpreadsheetApp.flush() — กันการอ่านค่าเก่าทันทีหลังเพิ่งเขียน</text>
+<text x="56" y="688.0" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#E65100">(read-after-write miss) ซึ่งเป็นบั๊กที่เจอบ่อยใน Google Apps Script</text>
+<rect x="40" y="729.0" width="714" height="96" rx="6" fill="#ECEFF1" stroke="#B0BEC5" stroke-width="1"/>
+<text x="56" y="758.0" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#22303A">จุดสำคัญ:  ระบบนี้ไม่มี REST API / ไม่มี fetch — หน้าเว็บคุยกับเซิร์ฟเวอร์ผ่าน google.script.run เท่านั้น</text>
+<text x="56" y="784.0" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">ทุกการกระทำ (เปิดโต๊ะ, สั่งอาหาร, บันทึกรายจ่าย ฯลฯ) เดินตามเส้นทาง ①→⑦ แบบเดียวกัน เปลี่ยนแค่ชื่อ action</text>
+<text x="56" y="808.0" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">เซิร์ฟเวอร์มีเวลาทำงานจำกัด 6 นาทีต่อครั้ง จึงออกแบบให้แต่ละคำสั่งเล็กและจบเร็ว</text></svg></div><div class="page"><svg width="210mm" height="297mm" viewBox="0 0 794 1123" xmlns="http://www.w3.org/2000/svg"><defs><marker id="a0" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#37474F"/></marker><marker id="a1" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#2E7D32"/></marker><marker id="a2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#C62828"/></marker><marker id="a3" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#1565C0"/></marker><marker id="a4" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#EF6C00"/></marker><marker id="a5" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#6A1B9A"/></marker><marker id="a6" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#00838F"/></marker></defs><rect width="794" height="1123" fill="#F7F9FB"/>
+<rect x="0" y="0" width="794" height="84" fill="#11212B"/>
+<rect x="0" y="0" width="9" height="84" fill="#4FC3F7"/>
+<text x="34" y="42" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="22" font-weight="700" fill="#fff">บันทึกรายจ่าย &amp; รายรับ</text>
+<text x="34" y="66" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="13" font-weight="400" fill="#B0BEC5">อีกหน้าที่ของแอป: ลงบัญชีเงินเข้า-ออกของร้าน เก็บเป็น “ตารางคู่” เสมอ</text>
+<text x="34" y="1103" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11" font-weight="400" fill="#90A4AE">WalletRecord — ระบบ POS + บัญชีร้านอาหาร (Google Apps Script + Google Sheets)</text>
+<text x="760" y="1103" text-anchor="end" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11" font-weight="400" fill="#90A4AE">หน้า 4 / 6</text>
+<rect x="65.0" y="117.0" width="300" height="46" rx="23.0" ry="23.0" fill="#2E7D32" stroke="#1A2327" stroke-width="1.4"/>
+<text x="215.0" y="140.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="13.5" font-weight="700" fill="#fff"><tspan x="215.0" y="140.0">บันทึก “รายจ่าย”</tspan></text>
+<polygon points="65.0,221.8 365.0,197.0 365.0,259.0 65.0,259.0" fill="#6D4C41" stroke="#1A2327" stroke-width="1.4"/>
+<text x="215.0" y="220.1" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#fff"><tspan x="215.0" y="220.1">กรอก: วันที่ • แหล่งซื้อ</tspan><tspan x="215.0" y="235.9">รายการของ • จำนวน • ราคา</tspan></text>
+<line x1="215.0" y1="163.0" x2="215.0" y2="197.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<polygon points="89.0,293.0 365.0,293.0 341.0,341.0 65.0,341.0" fill="#00838F" stroke="#1A2327" stroke-width="1.4"/>
+<text x="215.0" y="317.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#fff"><tspan x="215.0" y="317.0">ส่ง action = saveExpense</tspan></text>
+<line x1="215.0" y1="259.0" x2="215.0" y2="293.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<rect x="65.0" y="375.0" width="300" height="56" fill="#283593" stroke="#1A2327" stroke-width="1.4"/><line x1="76.0" y1="375.0" x2="76.0" y2="431.0" stroke="#fff" stroke-width="1"/><line x1="354.0" y1="375.0" x2="354.0" y2="431.0" stroke="#fff" stroke-width="1"/>
+<text x="215.0" y="394.8" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#fff"><tspan x="215.0" y="394.8">saveExpense()</tspan><tspan x="215.0" y="411.2">หาเลขแหล่งซื้อ (source_id)</tspan></text>
+<line x1="215.0" y1="341.0" x2="215.0" y2="375.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<path d="M 65.0,472.3 L 65.0,513.7 A 150.0,7.3 0 0 0 365.0,513.7 L 365.0,472.3 A 150.0,7.3 0 0 1 65.0,472.3 Z" fill="#6A1B9A" stroke="#1A2327" stroke-width="1.4"/><ellipse cx="215.0" cy="472.3" rx="150.0" ry="7.3" fill="#6A1B9A" stroke="#1A2327" stroke-width="1.4"/>
+<text x="215.0" y="485.1" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#fff"><tspan x="215.0" y="485.1">เขียนหัวบิล</tspan><tspan x="215.0" y="500.9">expense_transactions</tspan></text>
+<line x1="215.0" y1="431.0" x2="215.0" y2="465.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<path d="M 65.0,562.3 L 65.0,603.7 A 150.0,7.3 0 0 0 365.0,603.7 L 365.0,562.3 A 150.0,7.3 0 0 1 65.0,562.3 Z" fill="#6A1B9A" stroke="#1A2327" stroke-width="1.4"/><ellipse cx="215.0" cy="562.3" rx="150.0" ry="7.3" fill="#6A1B9A" stroke="#1A2327" stroke-width="1.4"/>
+<text x="215.0" y="575.1" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#fff"><tspan x="215.0" y="575.1">เขียนรายการย่อยทีละชิ้น</tspan><tspan x="215.0" y="590.9">expense_items</tspan></text>
+<line x1="215.0" y1="521.0" x2="215.0" y2="555.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<rect x="65.0" y="645.0" width="300" height="46" rx="23.0" ry="23.0" fill="#2E7D32" stroke="#1A2327" stroke-width="1.4"/>
+<text x="215.0" y="668.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#fff"><tspan x="215.0" y="668.0">เสร็จ — คืนเลขบิล</tspan></text>
+<line x1="215.0" y1="611.0" x2="215.0" y2="645.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<rect x="430.0" y="117.0" width="300" height="46" rx="23.0" ry="23.0" fill="#2E7D32" stroke="#1A2327" stroke-width="1.4"/>
+<text x="580.0" y="140.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="13.5" font-weight="700" fill="#fff"><tspan x="580.0" y="140.0">บันทึก “รายรับ”</tspan></text>
+<polygon points="430.0,219.4 730.0,197.0 730.0,253.0 430.0,253.0" fill="#6D4C41" stroke="#1A2327" stroke-width="1.4"/>
+<text x="580.0" y="217.1" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#fff"><tspan x="580.0" y="217.1">มาจากปิดบิล POS อัตโนมัติ</tspan><tspan x="580.0" y="232.9">หรือกรอกเอง</tspan></text>
+<line x1="580.0" y1="163.0" x2="580.0" y2="197.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<polygon points="454.0,287.0 730.0,287.0 706.0,335.0 430.0,335.0" fill="#00838F" stroke="#1A2327" stroke-width="1.4"/>
+<text x="580.0" y="311.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#fff"><tspan x="580.0" y="311.0">ส่ง action = saveIncome</tspan></text>
+<line x1="580.0" y1="253.0" x2="580.0" y2="287.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<polygon points="580.0,369.0 730.0,409.0 580.0,449.0 430.0,409.0" fill="#EF6C00" stroke="#1A2327" stroke-width="1.4"/>
+<text x="580.0" y="401.1" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#fff"><tspan x="580.0" y="401.1">มีชื่อลูกค้านี้</tspan><tspan x="580.0" y="416.9">อยู่แล้ว?</tspan></text>
+<line x1="580.0" y1="335.0" x2="580.0" y2="369.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<path d="M 430.0,490.3 L 430.0,531.7 A 150.0,7.3 0 0 0 730.0,531.7 L 730.0,490.3 A 150.0,7.3 0 0 1 430.0,490.3 Z" fill="#6A1B9A" stroke="#1A2327" stroke-width="1.4"/><ellipse cx="580.0" cy="490.3" rx="150.0" ry="7.3" fill="#6A1B9A" stroke="#1A2327" stroke-width="1.4"/>
+<text x="580.0" y="503.1" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#fff"><tspan x="580.0" y="503.1">เขียนหัวบิล</tspan><tspan x="580.0" y="518.9">income_transactions</tspan></text>
+<line x1="580.0" y1="449.0" x2="580.0" y2="483.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<path d="M 430.0,580.3 L 430.0,621.7 A 150.0,7.3 0 0 0 730.0,621.7 L 730.0,580.3 A 150.0,7.3 0 0 1 430.0,580.3 Z" fill="#6A1B9A" stroke="#1A2327" stroke-width="1.4"/><ellipse cx="580.0" cy="580.3" rx="150.0" ry="7.3" fill="#6A1B9A" stroke="#1A2327" stroke-width="1.4"/>
+<text x="580.0" y="593.1" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#fff"><tspan x="580.0" y="593.1">เขียนรายการย่อยทีละชิ้น</tspan><tspan x="580.0" y="608.9">income_invoice_items</tspan></text>
+<line x1="580.0" y1="539.0" x2="580.0" y2="573.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<rect x="430.0" y="663.0" width="300" height="46" rx="23.0" ry="23.0" fill="#2E7D32" stroke="#1A2327" stroke-width="1.4"/>
+<text x="580.0" y="686.0" text-anchor="middle" dominant-baseline="central" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#fff"><tspan x="580.0" y="686.0">เสร็จ — คืนเลขบิล</tspan></text>
+<line x1="580.0" y1="629.0" x2="580.0" y2="663.0" stroke="#37474F" stroke-width="1.8" marker-end="url(#a0)"/>
+<text x="410" y="432" text-anchor="end" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="10.5" font-weight="400" fill="#C62828">ถ้ายังไม่มี → สร้างลูกค้าใหม่</text>
+<text x="410" y="448" text-anchor="end" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="10.5" font-weight="400" fill="#C62828">ในตาราง customers ก่อน</text>
+<rect x="40" y="973" width="714" height="92" rx="6" fill="#E8F5E9" stroke="#43A047" stroke-width="1.2"/>
+<text x="56" y="1005" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="13.5" font-weight="700" fill="#22303A">เห็นรูปแบบเดียวกันไหม?  ทั้งรายรับและรายจ่ายเก็บเป็น “ตารางคู่” เสมอ:</text>
+<text x="70" y="1031" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#1B5E20">• ตารางหัวบิล (transactions) = 1 แถวต่อ 1 บิล → เก็บวันที่ + ยอดรวม</text>
+<text x="70" y="1055" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#1B5E20">• ตารางรายการย่อย (items) = หลายแถวต่อ 1 บิล → เก็บของแต่ละชิ้น/จาน</text></svg></div><div class="page"><svg width="210mm" height="297mm" viewBox="0 0 794 1123" xmlns="http://www.w3.org/2000/svg"><defs><marker id="a0" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#37474F"/></marker><marker id="a1" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#2E7D32"/></marker><marker id="a2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#C62828"/></marker><marker id="a3" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#1565C0"/></marker><marker id="a4" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#EF6C00"/></marker><marker id="a5" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#6A1B9A"/></marker><marker id="a6" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#00838F"/></marker></defs><rect width="794" height="1123" fill="#F7F9FB"/>
+<rect x="0" y="0" width="794" height="84" fill="#11212B"/>
+<rect x="0" y="0" width="9" height="84" fill="#4FC3F7"/>
+<text x="34" y="42" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="22" font-weight="700" fill="#fff">คำสั่ง (action) ทั้งหมดที่ระบบรองรับ</text>
+<text x="34" y="66" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="13" font-weight="400" fill="#B0BEC5">ทุกปุ่มบนหน้าจอ = ส่ง 1 action เข้า WebApp.js แล้ววิ่งไปฟังก์ชันใน Api.js</text>
+<text x="34" y="1103" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11" font-weight="400" fill="#90A4AE">WalletRecord — ระบบ POS + บัญชีร้านอาหาร (Google Apps Script + Google Sheets)</text>
+<text x="760" y="1103" text-anchor="end" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11" font-weight="400" fill="#90A4AE">หน้า 5 / 6</text>
+<rect x="40" y="120" width="714" height="28" rx="5" fill="#1565C0" stroke="#1565C0" stroke-width="0"/>
+<text x="52" y="139" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="13" font-weight="700" fill="#fff">โต๊ะ / ออเดอร์ (POS)</text>
+<text x="58" y="160" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">getOpenSessions</text>
+<text x="360" y="160" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— ดึงโต๊ะที่เปิดค้างอยู่ + รายการอาหาร</text>
+<line x1="52" y1="168" x2="750" y2="168" stroke="#E0E4E7" stroke-width="0.7"/>
+<text x="58" y="185" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">createSession</text>
+<text x="360" y="185" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— เปิดโต๊ะใหม่ (กันชื่อซ้ำ)</text>
+<line x1="52" y1="193" x2="750" y2="193" stroke="#E0E4E7" stroke-width="0.7"/>
+<text x="58" y="210" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">addOrderItem</text>
+<text x="360" y="210" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— สั่งอาหารเข้าโต๊ะ</text>
+<line x1="52" y1="218" x2="750" y2="218" stroke="#E0E4E7" stroke-width="0.7"/>
+<text x="58" y="235" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">updateItemStatus</text>
+<text x="360" y="235" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— เปลี่ยนสถานะจาน (เช่น เสิร์ฟแล้ว)</text>
+<line x1="52" y1="243" x2="750" y2="243" stroke="#E0E4E7" stroke-width="0.7"/>
+<text x="58" y="260" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">removeOrderItem</text>
+<text x="360" y="260" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— ลบรายการอาหารออก</text>
+<line x1="52" y1="268" x2="750" y2="268" stroke="#E0E4E7" stroke-width="0.7"/>
+<text x="58" y="285" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">closeSession</text>
+<text x="360" y="285" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— ปิดบิล → สร้างรายรับอัตโนมัติ</text>
+<line x1="52" y1="293" x2="750" y2="293" stroke="#E0E4E7" stroke-width="0.7"/>
+<text x="58" y="310" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">deleteSession</text>
+<text x="360" y="310" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— ยกเลิกโต๊ะ (ห้ามลบถ้าจ่ายแล้ว)</text>
+<line x1="52" y1="318" x2="750" y2="318" stroke="#E0E4E7" stroke-width="0.7"/>
+<rect x="40" y="347" width="714" height="28" rx="5" fill="#00838F" stroke="#00838F" stroke-width="0"/>
+<text x="52" y="366" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="13" font-weight="700" fill="#fff">เมนูอาหาร</text>
+<text x="58" y="387" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">getMenuItems / getMenuCategories</text>
+<text x="360" y="387" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— ดึงเมนูและหมวดหมู่</text>
+<line x1="52" y1="395" x2="750" y2="395" stroke="#E0E4E7" stroke-width="0.7"/>
+<text x="58" y="412" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">saveMenuItem / updateMenuItem</text>
+<text x="360" y="412" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— เพิ่ม / แก้เมนู</text>
+<line x1="52" y1="420" x2="750" y2="420" stroke="#E0E4E7" stroke-width="0.7"/>
+<text x="58" y="437" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">deleteMenuItem</text>
+<text x="360" y="437" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— ลบเมนู</text>
+<line x1="52" y1="445" x2="750" y2="445" stroke="#E0E4E7" stroke-width="0.7"/>
+<text x="58" y="462" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">saveMenuCategory</text>
+<text x="360" y="462" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— เพิ่มหมวดหมู่</text>
+<line x1="52" y1="470" x2="750" y2="470" stroke="#E0E4E7" stroke-width="0.7"/>
+<text x="58" y="487" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">getMenuImage(s) / syncMenuImages</text>
+<text x="360" y="487" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— จัดการรูปเมนู</text>
+<line x1="52" y1="495" x2="750" y2="495" stroke="#E0E4E7" stroke-width="0.7"/>
+<rect x="40" y="524" width="714" height="28" rx="5" fill="#6A1B9A" stroke="#6A1B9A" stroke-width="0"/>
+<text x="52" y="543" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="13" font-weight="700" fill="#fff">เงิน: รายรับ-รายจ่าย</text>
+<text x="58" y="564" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">saveExpense / updateExpense</text>
+<text x="360" y="564" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— บันทึก / แก้รายจ่าย</text>
+<line x1="52" y1="572" x2="750" y2="572" stroke="#E0E4E7" stroke-width="0.7"/>
+<text x="58" y="589" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">saveIncome</text>
+<text x="360" y="589" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— บันทึกรายรับ</text>
+<line x1="52" y1="597" x2="750" y2="597" stroke="#E0E4E7" stroke-width="0.7"/>
+<text x="58" y="614" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">getExpenseDescriptions</text>
+<text x="360" y="614" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— ดึงรายการของที่เคยซื้อ</text>
+<line x1="52" y1="622" x2="750" y2="622" stroke="#E0E4E7" stroke-width="0.7"/>
+<text x="58" y="639" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">deleteTransaction</text>
+<text x="360" y="639" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— ลบบิลรายรับ/รายจ่าย</text>
+<line x1="52" y1="647" x2="750" y2="647" stroke="#E0E4E7" stroke-width="0.7"/>
+<rect x="40" y="676" width="714" height="28" rx="5" fill="#EF6C00" stroke="#EF6C00" stroke-width="0"/>
+<text x="52" y="695" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="13" font-weight="700" fill="#fff">ประวัติ / รายงาน / ผู้ใช้</text>
+<text x="58" y="716" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">getHistory / getSummary</text>
+<text x="360" y="716" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— ดูประวัติ + ยอดสรุป</text>
+<line x1="52" y1="724" x2="750" y2="724" stroke="#E0E4E7" stroke-width="0.7"/>
+<text x="58" y="741" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">getTransactionItems / searchItems</text>
+<text x="360" y="741" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— ดูรายการในบิล / ค้นหา</text>
+<line x1="52" y1="749" x2="750" y2="749" stroke="#E0E4E7" stroke-width="0.7"/>
+<text x="58" y="766" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">getSalesReport / getMenuRankByPeriod</text>
+<text x="360" y="766" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— รายงานยอดขาย + เมนูขายดี</text>
+<line x1="52" y1="774" x2="750" y2="774" stroke="#E0E4E7" stroke-width="0.7"/>
+<text x="58" y="791" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">getIngredientStock</text>
+<text x="360" y="791" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— ประเมินวัตถุดิบคงเหลือ</text>
+<line x1="52" y1="799" x2="750" y2="799" stroke="#E0E4E7" stroke-width="0.7"/>
+<text x="58" y="816" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="700" fill="#0D1B22">getAdminByPin</text>
+<text x="360" y="816" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12" font-weight="400" fill="#455A64">— ตรวจ PIN ตอนล็อกอิน</text>
+<line x1="52" y1="824" x2="750" y2="824" stroke="#E0E4E7" stroke-width="0.7"/></svg></div><div class="page"><svg width="210mm" height="297mm" viewBox="0 0 794 1123" xmlns="http://www.w3.org/2000/svg"><defs><marker id="a0" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#37474F"/></marker><marker id="a1" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#2E7D32"/></marker><marker id="a2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#C62828"/></marker><marker id="a3" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#1565C0"/></marker><marker id="a4" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#EF6C00"/></marker><marker id="a5" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#6A1B9A"/></marker><marker id="a6" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#00838F"/></marker></defs><rect width="794" height="1123" fill="#F7F9FB"/>
+<rect x="0" y="0" width="794" height="84" fill="#11212B"/>
+<rect x="0" y="0" width="9" height="84" fill="#4FC3F7"/>
+<text x="34" y="42" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="22" font-weight="700" fill="#fff">คำอธิบายสัญลักษณ์ผังงาน (Legend)</text>
+<text x="34" y="66" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="13" font-weight="400" fill="#B0BEC5">สัญลักษณ์มาตรฐาน ANSI/ISO ที่ใช้ในเอกสารนี้ — รูปทรงคือสิ่งที่บอกความหมาย</text>
+<text x="34" y="1103" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11" font-weight="400" fill="#90A4AE">WalletRecord — ระบบ POS + บัญชีร้านอาหาร (Google Apps Script + Google Sheets)</text>
+<text x="760" y="1103" text-anchor="end" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11" font-weight="400" fill="#90A4AE">หน้า 6 / 6</text>
+<rect x="50.0" y="105.0" width="120" height="50" rx="25.0" ry="25.0" fill="#2E7D32" stroke="#1A2327" stroke-width="1.4"/>
+<text x="195" y="124" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="15" font-weight="700" fill="#1A2327">จุดเริ่มต้น / จุดสิ้นสุด</text>
+<text x="195" y="146" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="400" fill="#455A64">ทรงแคปซูล — บอกว่าเริ่มหรือจบการทำงาน (Terminator)</text>
+<line x1="40" y1="168" x2="754" y2="168" stroke="#E0E4E7" stroke-width="0.7"/>
+<rect x="50.0" y="183.0" width="120" height="50" fill="#1565C0" stroke="#1A2327" stroke-width="1.4"/>
+<text x="195" y="202" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="15" font-weight="700" fill="#1A2327">ขั้นตอนการทำงานทั่วไป</text>
+<text x="195" y="224" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="400" fill="#455A64">สี่เหลี่ยมผืนผ้า — การประมวลผล 1 ขั้น (Process)</text>
+<line x1="40" y1="246" x2="754" y2="246" stroke="#E0E4E7" stroke-width="0.7"/>
+<rect x="50.0" y="261.0" width="120" height="50" fill="#283593" stroke="#1A2327" stroke-width="1.4"/><line x1="58.4" y1="261.0" x2="58.4" y2="311.0" stroke="#fff" stroke-width="1"/><line x1="161.6" y1="261.0" x2="161.6" y2="311.0" stroke="#fff" stroke-width="1"/>
+<text x="195" y="280" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="15" font-weight="700" fill="#1A2327">เรียกฟังก์ชันสำเร็จรูป</text>
+<text x="195" y="302" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="400" fill="#455A64">สี่เหลี่ยมมีขีดข้างสองข้าง — เรียกฟังก์ชันที่นิยามไว้ เช่น closeSession() (Predefined process)</text>
+<line x1="40" y1="324" x2="754" y2="324" stroke="#E0E4E7" stroke-width="0.7"/>
+<polygon points="110.0,339.0 170.0,364.0 110.0,389.0 50.0,364.0" fill="#EF6C00" stroke="#1A2327" stroke-width="1.4"/>
+<text x="195" y="358" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="15" font-weight="700" fill="#1A2327">การตัดสินใจ</text>
+<text x="195" y="380" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="400" fill="#455A64">ข้าวหลามตัด — จุดเลือกทาง ตอบ ใช่/ไม่ (Decision)</text>
+<line x1="40" y1="402" x2="754" y2="402" stroke="#E0E4E7" stroke-width="0.7"/>
+<polygon points="75.0,417.0 170.0,417.0 145.0,467.0 50.0,467.0" fill="#00838F" stroke="#1A2327" stroke-width="1.4"/>
+<text x="195" y="436" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="15" font-weight="700" fill="#1A2327">รับ / ส่งข้อมูล</text>
+<text x="195" y="458" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="400" fill="#455A64">สี่เหลี่ยมด้านขนาน — ข้อมูลเข้า-ออกระหว่างระบบ (Input/Output)</text>
+<line x1="40" y1="480" x2="754" y2="480" stroke="#E0E4E7" stroke-width="0.7"/>
+<polygon points="50.0,515.0 170.0,495.0 170.0,545.0 50.0,545.0" fill="#6D4C41" stroke="#1A2327" stroke-width="1.4"/>
+<text x="195" y="514" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="15" font-weight="700" fill="#1A2327">กรอกข้อมูลด้วยมือ</text>
+<text x="195" y="536" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="400" fill="#455A64">ขอบบนเฉียง — คนพิมพ์/กรอกข้อมูลเอง เช่น ใส่ PIN (Manual input)</text>
+<line x1="40" y1="558" x2="754" y2="558" stroke="#E0E4E7" stroke-width="0.7"/>
+<path d="M 50.0,579.5 L 50.0,616.5 A 60.0,6.5 0 0 0 170.0,616.5 L 170.0,579.5 A 60.0,6.5 0 0 1 50.0,579.5 Z" fill="#6A1B9A" stroke="#1A2327" stroke-width="1.4"/><ellipse cx="110.0" cy="579.5" rx="60.0" ry="6.5" fill="#6A1B9A" stroke="#1A2327" stroke-width="1.4"/>
+<text x="195" y="592" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="15" font-weight="700" fill="#1A2327">ฐานข้อมูล</text>
+<text x="195" y="614" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="400" fill="#455A64">ทรงกระบอก — อ่าน/เขียนข้อมูลใน Google Sheets (Database)</text>
+<line x1="40" y1="636" x2="754" y2="636" stroke="#E0E4E7" stroke-width="0.7"/>
+<path d="M 50.0,651.0 L 170.0,651.0 L 170.0,693.0 C 140.0,709.0 116.0,685.0 110.0,693.0 C 80.0,701.0 74.0,685.0 50.0,693.0 Z" fill="#AD1457" stroke="#1A2327" stroke-width="1.4"/>
+<text x="195" y="670" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="15" font-weight="700" fill="#1A2327">เอกสาร / ใบเสร็จ</text>
+<text x="195" y="692" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11.5" font-weight="400" fill="#455A64">สี่เหลี่ยมก้นหยัก — ผลลัพธ์ที่เป็นเอกสาร เช่น ใบเสร็จ (Document)</text>
+<line x1="40" y1="714" x2="754" y2="714" stroke="#E0E4E7" stroke-width="0.7"/>
+<text x="40" y="758" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="15" font-weight="700" fill="#1A2327">ความหมายของลูกศร</text>
+<line x1="70" y1="792" x2="170" y2="792" stroke="#37474F" stroke-width="2" marker-end="url(#a0)"/>
+<text x="190" y="796" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="400" fill="#22303A">ทิศทางการไหลของงาน → ไปขั้นตอนถัดไป</text>
+<line x1="70" y1="824" x2="170" y2="824" stroke="#2E7D32" stroke-width="2" marker-end="url(#a1)"/>
+<text x="190" y="828" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="400" fill="#22303A">เส้นทาง “ใช่ / สำเร็จ”</text>
+<line x1="70" y1="856" x2="170" y2="856" stroke="#C62828" stroke-width="2" marker-end="url(#a2)"/>
+<text x="190" y="860" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="400" fill="#22303A">เส้นทาง “ไม่ / ผิดพลาด / ย้อนกลับ”</text>
+<rect x="40" y="898" width="714" height="64" rx="6" fill="#FFFDE7" stroke="#FBC02D" stroke-width="1.2"/>
+<text x="56" y="924" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="12.5" font-weight="700" fill="#22303A">หมายเหตุ: สีช่วยให้กวาดตาดูง่าย แต่ “รูปทรง” คือสิ่งที่บอกความหมายตามมาตรฐาน</text>
+<text x="56" y="948" text-anchor="start" font-family="'Sukhumvit Set','Thonburi',sans-serif" font-size="11" font-weight="400" fill="#455A64">เขียว=เริ่ม/จบ • น้ำเงิน/คราม=ทำงาน • ส้ม=ตัดสินใจ • ม่วง=ฐานข้อมูล • ฟ้าเขียว=รับส่งข้อมูล • น้ำตาล=กรอกมือ • ชมพู=เอกสาร</text></svg></div></body></html>
